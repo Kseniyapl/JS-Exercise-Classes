@@ -41,31 +41,6 @@ class Airplane {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-// function Person(name, age) {
-// this.name = name;
-// this.age = age;
-// this.stomach = []
-// }
-// Person.prototype.eat = function (food){
-// if(this.stomach.length<10){
-// this.stomach.push(food)
-// }
-// }
-// Person.prototype.poop = function(){
-// this.stomach = []
-// }
-// Person.prototype.toString = function(){
-// return `${this.name}, ${this.age}`
-// }
-
-// const mary = new Person("mary", 50)
-// console.log("Task 1:",mary.toString())
-// mary.eat('pizza')
-// console.log(mary.stomach)
-// mary.poop()
-// console.log(mary.stomach)
-
-
 class Person {
   constructor(name, age, stomach = []) {
     this.name = name;
@@ -105,12 +80,36 @@ console.log(masha.stomach);
         + Should cause the the `tank` to go down taking `milesPerGallon` into account.
     - A car which runs out of `fuel` while driving can't drive any more distance:
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
-*/
+      */
 
 class Car {
-  
-}
+  constructor(model, milesPerGallon){
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
+  }
+  fill(gallons){
+    this.tank = this.tank + gallons;
+  }
+  drive(distance){
+    const distanceDriven = this.tank *this.milesPerGallon;
+    if(distance<= distanceDriven){
+      this.odometer = this.odometer + distance;
+      this.tank  = this.tank - (distance/this.distanceDriven)
+    }
+    else{
+      this.odometer = this.odometer+distanceDriven;
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles!`
 
+    }
+  }
+}
+const batMobile = new Car("BatMobile", 20)
+console.log(batMobile)
+console.log(batMobile.fill(20))
+console.log(batMobile.drive(100))
 /*
   TASK 3
     - Write a Lambdasian class.
@@ -124,7 +123,14 @@ class Car {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-  
+constructor({name, age, location}){
+  this.name = name,
+  this.age = age,
+  this.location = location
+}
+  speak(){
+    return `Hello my name is ${this.name}, I am from ${this.location}`
+  }
 }
 
 /*
@@ -141,8 +147,19 @@ class Lambdasian {
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
-class Instructor {
-
+class Instructor extends Lambdasian{
+constructor({name, age, location, specialty, favLanguage, catchPhrase }) {
+  super({name, age, location, specialty, favLanguage, catchPhrase })
+    this.specialty = specialty,
+    this.favLanguage = favLanguage,
+    this.catchPhrase = catchPhrase
+  }
+  demo(subject){
+    return `Today we are learning about ${subject}`
+  }
+  grade(student, subject){
+    return `${student} receives a perfect score on ${subject}`
+  }
 }
 /*
   TASK 5
