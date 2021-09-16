@@ -41,10 +41,58 @@ class Airplane {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
+// function Person(name, age) {
+// this.name = name;
+// this.age = age;
+// this.stomach = []
+// }
+// Person.prototype.eat = function (food){
+// if(this.stomach.length<10){
+// this.stomach.push(food)
+// }
+// }
+// Person.prototype.poop = function(){
+// this.stomach = []
+// }
+// Person.prototype.toString = function(){
+// return `${this.name}, ${this.age}`
+// }
+
+// const mary = new Person("mary", 50)
+// console.log("Task 1:",mary.toString())
+// mary.eat('pizza')
+// console.log(mary.stomach)
+// mary.poop()
+// console.log(mary.stomach)
+
+
 class Person {
-  
+  constructor(name, age, stomach = []) {
+    this.name = name;
+    this.age = age;
+    this.stomach = stomach;
+  }
+eat(food){
+    if(this.stomach.length<10){
+    this.stomach.push(food)
+  }
+}
+poop(){
+  this.stomach = []
+  }
+toString(){
+  return `${this.name} is ${this.age} years old`
+  }
 }
 
+const masha = new Person("Masha", 20)
+console.log(masha);
+console.log("Task 1:",masha.toString());
+masha.eat('pizza');
+masha.eat('pizza');
+console.log(masha.stomach);
+masha.poop();
+console.log(masha.stomach);
 /*
   TASK 2
     - Write a Car class whose constructor initializes `model` and `milesPerGallon` from arguments.
